@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 class Router {
     public function run() {
-        // --- COMIENZO CÓDIGO DEL PROFESOR ---
         
         // Método HTTP
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';

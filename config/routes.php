@@ -1,13 +1,16 @@
 <?php
+
+//estructura que va a contener toda la lógica de navegación.
 class Router {
+    //Cuando el index.php llama a run(), se aprieta el botón de "encendido" del ruteo.
     public function run() {
-        $method = $_SERVER['REQUEST_METHOD'];
-        $requestUri = $_SERVER['REQUEST_URI'];
+        $method = $_SERVER['REQUEST_METHOD']; //¿Cómo vino el pedido?(GET/POST)
+        $requestUri = $_SERVER['REQUEST_URI']; //Captura la URL completa que escribió el usuario
 
         // Limpiamos la ruta para que solo quede lo que viene después de /public
-        $path = parse_url($requestUri, PHP_URL_PATH);
-        $path = str_replace('/AgroSense/public', '', $path);
-        if ($path === '' || $path === false) { $path = '/'; }
+        $path = parse_url($requestUri, PHP_URL_PATH); //para que solo vea el healt
+        $path = str_replace('/AgroSense/public', '', $path); //No me importa en qué edificio estoy, solo quiero saber a qué oficina vOY
+        if ($path === '' || $path === false) { $path = '/'; } // pagina de inicio /
 
         // Ruta de salud
         if ($method === 'GET' && $path === '/health') {
